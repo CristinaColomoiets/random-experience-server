@@ -14,8 +14,13 @@ const experienceSchema = new Schema({
     places: {
         type: String
 
+    },
+
+},
+    {
+        timestamps: true
     }
-})
+)
 
 
 const Experience = model("Experience", experienceSchema)
