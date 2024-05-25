@@ -9,7 +9,5 @@ module.exports = app => {
   const PackageRouter = require('./package.routes')
   app.use('/api/package', PackageRouter)
 
-  const AuthRouter = require('./auth.routes')
-  app.use('/api/user', AuthRouter)
 
 }
