@@ -7,12 +7,14 @@ const experienceSchema = new Schema({
         required: true
     },
 
-    hotels: {
+    hotel: {
         type: String,
         required: true
     },
     places: {
-        type: String
+        type: [String],
+        required: true
+
 
     },
 

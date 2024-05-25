@@ -3,9 +3,14 @@ const router = require("express").Router()
 const Package = require("../models/Package.model")
 
 
-router.post('/addPackages', (req, res) => {
+router.post('/addPackage', (req, res) => {
 
-    res.send('FUNCIONA EL POST DE PACKAGE')
+    const { prices, description, experience } = req.body
+
+    Package
+        .create({ prices, description, experience })
+        .then(newPackage => res.json(newPackage))
+        .catch(err => res.json({ code: 500, errDetails: err }))
 
 })
 
