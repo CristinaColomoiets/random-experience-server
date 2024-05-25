@@ -3,10 +3,10 @@ const router = require("express").Router()
 const Experience = require("../models/Experience.model")
 
 router.post('/addExperience', (req, res) => {
-    const { country, places, hotels } = req.body
+    const { country, places, hotel} = req.body
 
     Experience
-        .create({ country, places, hotels })
+        .create({country, places, hotel})
         .then(newExperience => res.json(newExperience))
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
@@ -30,10 +30,10 @@ router.get('/:experienceId', (req, res) => {
 router.put('/:experienceId', (req, res) => {
 
     const { experienceId } = req.params
-    const { country, places, hotels } = req.body
+    const {country, places, hotel} = req.body
 
     Experience
-        .findByIdAndUpdate(experienceId, { country, places, hotels })
+        .findByIdAndUpdate(experienceId, {country, places, hotel})
         .then(experienceUpdate => res.sendStatus(204))
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
