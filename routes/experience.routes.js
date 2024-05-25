@@ -18,13 +18,12 @@ router.get('/allExperiences', (req, res) => {
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
 
-
 router.get('/:experienceId', (req, res) => {
     const { experienceId } = req.params
 
     Experience
         .findById(experienceId)
-        .then(oneExperience => res.json(oneExperience))
+        .then(experience => res.json(experience))
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
 
@@ -48,5 +47,4 @@ router.delete('/:experienceId', (req, res) => {
         .catch(err => res.json({ code: 500, errDetails: err }))
 
 })
-
 module.exports = router
