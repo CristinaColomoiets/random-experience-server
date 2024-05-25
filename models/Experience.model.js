@@ -14,8 +14,6 @@ const experienceSchema = new Schema({
     places: {
         type: [String],
         required: true
-
-
     },
 
 },

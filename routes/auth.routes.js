@@ -84,9 +84,8 @@ router.post('/login', (req, res, next) => {
                 { algorithm: 'HS256', expiresIn: "6h" }
             )
 
-            // res.json('Dentrooo')
-
             res.json({ authToken: authToken });
+
         })
         .catch(err => next(err))
 })

@@ -19,10 +19,9 @@ const userSchema = new Schema({
         required: [true, 'Username is mandatory'],
         minlength: [3, 'The user needs at least 3 characters']
     },
-
     image: {
         type: String,
-        default: "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-No-Background.png"
+        default: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-No-Background.png'
     }
 },
 
