@@ -3,11 +3,17 @@ const { Schema, model } = require("mongoose");
 const PackageSchema = new Schema({
 
     price: {
-        type: String
+        type: String,
+        required: true
+
     },
+
     description: {
-        type: String
+        type: String,
+        required: true
+
     },
+
     experience: {
         type: Schema.ObjectId,
         ref: 'Experience'
@@ -17,5 +23,7 @@ const PackageSchema = new Schema({
     {
         timestamps: true
     })
+
 const Package = model("Package", PackageSchema)
+
 module.exports = Package

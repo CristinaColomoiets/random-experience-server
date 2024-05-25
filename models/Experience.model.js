@@ -12,8 +12,13 @@ const experienceSchema = new Schema({
         required: true
     },
     places: {
+<<<<<<< HEAD
         type: [String]
 
+=======
+        type: [String],
+        required: true
+>>>>>>> 494c4a98fc2300c9834ec608d60ea6303f363ee0
     },
 
 },
