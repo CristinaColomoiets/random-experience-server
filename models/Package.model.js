@@ -5,9 +5,15 @@ const PackageSchema = new Schema({
     price: {
         type: String
     },
+
+    image: {
+        type: String
+    },
+
     description: {
         type: String
     },
+
     experience: {
         type: Schema.ObjectId,
         ref: 'Experience'
