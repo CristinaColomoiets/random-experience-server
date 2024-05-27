@@ -22,7 +22,19 @@ const userSchema = new Schema({
   image: {
     type: String,
     default: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-No-Background.png'
+  },
+
+  balance: {
+    type: Number,
+    default: 0
+  },
+
+  role: {
+    type: String,
+    enum: ['USER', 'ADMIN'],
+    default: 'USER'
   }
+
 },
 
   {

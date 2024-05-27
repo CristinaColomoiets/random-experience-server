@@ -9,12 +9,28 @@ const experienceSchema = new Schema({
 
     hotel: {
         type: String,
-        required: true
+        required: true,
+
     },
+
     places: {
         type: [String],
         required: true
     },
+
+    package: {
+        type: Schema.ObjectId,
+        ref: 'Package'
+    },
+
+    location: {
+        type: {
+            type: String
+        },
+        coordinates: {
+            type: [Number]
+        }
+    }
 
 },
     {
@@ -22,6 +38,7 @@ const experienceSchema = new Schema({
     }
 )
 
+experienceSchema.index({ location: '2dsphere' })
 
 const Experience = model("Experience", experienceSchema)
 

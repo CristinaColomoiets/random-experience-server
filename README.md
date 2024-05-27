@@ -5,24 +5,23 @@
 
 | HTTP VERB |             PATH                     |               DESCRIPTION                   |
 |-----------|--------------------------------------|---------------------------------------------|
-|GET        |'/api/experience/allExperience'       | get all experiences                         |
-|GET        |'/api/experience/:experienceId'       | get one experience                          |
-|GET        |'/api/experience/random/:experienceID'| get one random experience                   |
-|POST       |'/api/experiences/addExperience'      | add new experience                          |
-|PUT        |'/api/experience/:experienceId'       | edit one experience                         |
-|DELETE     |'/api/experience/:experienceId'       | delete one experience                       |
+|GET        |'/api/experience/'                    | get all experiences                         |
+|GET        |'/api/experiences/:experienceId'       | get one experience                          |
+|POST       |'/api/experiences/'                   | add new experience                          |
+|PUT        |'/api/experiences/:experienceId'       | edit one experience                         |
+|DELETE     |'/api/experiences/:experienceId'       | delete one experience                       |
 
 
 PACKAGE CRUD (2º)
 --
 
-| HTTP VERB |             PATH            |               DESCRIPTION                   |
-|-----------|-----------------------------|---------------------------------------------|
-|GET        |'/api/package/allPackages'   | get all packages                            |
-|GET        |'/api/package/:packageId'    | get one package                             |
-|POST       |'/api/package/addPackage'    | add new package                             |
-|PUT        |'/api/package/:packageId'    | edit one package                            |
-|DELETE     |'/api/package/:packageId'    | delete one package                          |
+| HTTP VERB |             PATH                |               DESCRIPTION                   |
+|-----------|---------------------------------|---------------------------------------------|
+|GET        |'/api/packages/'                  | get all packages                            |
+|GET        |'/api/packages/:packageId'        | get one package                             |
+|POST       |'/api/packages/'                  | add new package                             |
+|PUT        |'/api/packages/:packageId'        | edit one package                            |
+|DELETE     |'/api/packages/:packageId'        | delete one package                          |
 
 
 AUTH

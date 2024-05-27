@@ -2,49 +2,58 @@ const router = require("express").Router()
 
 const Experience = require("../models/Experience.model")
 
-router.post('/addExperience', (req, res) => {
-    const { country, places, hotel } = req.body
+router.post('/', (req, res, next) => {
+    const { country, places, hotel, latitude, longitude } = req.body
 
+    const location = {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+
+    }
     Experience
-        .create({ country, places, hotel })
-        .then(newExperience => res.json(newExperience))
-        .catch(err => res.json({ code: 500, errDetails: err }))
+        .create({ country, places, hotel, location })
+        .then(newExperience => res.status(201).json(newExperience))
+        .catch(err => next(err))
 })
 
-router.get('/allExperiences', (req, res) => {
+router.get('/', (req, res, next) => {
     Experience
         .find()
         .then(allExperiences => res.json(allExperiences))
-        .catch(err => res.json({ code: 500, errDetails: err }))
+        .catch(err => next(err))
+
 })
 
-router.get('/:experienceId', (req, res) => {
+router.get('/:experienceId', (req, res, next) => {
     const { experienceId } = req.params
 
     Experience
         .findById(experienceId)
         .then(experience => res.json(experience))
-        .catch(err => res.json({ code: 500, errDetails: err }))
+        .catch(err => next(err))
+
 })
 
-router.put('/:experienceId', (req, res) => {
+router.put('/:experienceId', (req, res, next) => {
 
     const { experienceId } = req.params
     const { country, places, hotel } = req.body
 
     Experience
         .findByIdAndUpdate(experienceId, { country, places, hotel })
-        .then(experienceUpdate => res.sendStatus(204))
-        .catch(err => res.json({ code: 500, errDetails: err }))
+        .then(() => res.sendStatus(204))
+        .catch(err => next(err))
+
 })
 
-router.delete('/:experienceId', (req, res) => {
+router.delete('/:experienceId', (req, res, next) => {
     const { experienceId } = req.params
 
     Experience
         .findByIdAndDelete(experienceId)
-        .then(() => res.json())
-        .catch(err => res.json({ code: 500, errDetails: err }))
+        .then(() => res.sendStatus(204))
+        .catch(err => next(err))
+
 
 })
 module.exports = router

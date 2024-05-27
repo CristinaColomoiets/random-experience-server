@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const PackageSchema = new Schema({
+    title: {
+        type: String
+    },
 
     price: {
         type: String
@@ -12,11 +15,6 @@ const PackageSchema = new Schema({
 
     description: {
         type: String
-    },
-
-    experience: {
-        type: Schema.ObjectId,
-        ref: 'Experience'
     }
 
 },
