@@ -4,15 +4,10 @@ const Package = require("../models/Package.model")
 
 
 router.post('/addPackage', (req, res) => {
-    const { prices, description, experience } = req.body
+    const { prices, description, image, experience } = req.body
 
     Package
-        .create({ prices, description, experience })
-        .then(newPackage => res.json(newPackage))
-        .catch(err => res.json({ code: 500, errDetails: err }))
-
-    Package
-        .create({ prices, description, experience })
+        .create({ prices, description, experience, image })
         .then(newPackage => res.json(newPackage))
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
@@ -20,6 +15,7 @@ router.post('/addPackage', (req, res) => {
 router.get('/allPackages', (req, res) => {
     Package
         .find()
+        .populate('experience')
         .then(allPackages => res.json(allPackages))
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
@@ -34,9 +30,10 @@ router.get('/:packageId', (req, res) => {
 
 router.put('/:packageId', (req, res) => {
     const { packageId } = req.params
-    const { price, description, experience } = req.body
+    const { price, desceiprtion, experience, image } = req.body
+
     Package
-        .findByIdAndUpdate(packageId, { price, description, experience })
+        .findByIdAndUpdate(packageId, { price, desceiprtion, experience, image })
         .then(packageUpdate => res.sendStatus(204))
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
