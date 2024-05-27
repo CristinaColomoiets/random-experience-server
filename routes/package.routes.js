@@ -49,32 +49,6 @@ router.delete('/:packageId', (req, res) => {
         .catch(err => res.json({ code: 500, errDetails: err }))
 })
 
-router.get('/:packageId', (req, res) => {
-    const {packageId} = req.params
-    Package
-        .findById(packageId)
-        .then(onePackage => res.json(onePackage))
-        .catch(err => res.json({ code: 500, errDetails: err }))
-})
-
-router.put('/:packageId', (req, res) => {
-    const {packageId} = req.params
-    const {price, desceiprtion, experience} = req.body
-
-    Package
-        .findByIdAndUpdate(packageId, {price, desceiprtion, experience})
-        .then(packageUpdate => res.sendStatus(204))
-        .catch(err => res.json({ code: 500, errDetails: err }))
-})
-
-router.delete('/:packageId', (req, res) => {
-    const {packageId} = req.params
-    Package
-        .findByIdAndDelete(packageId)
-        .then(() => res.json())
-        .catch(err => res.json({ code: 500, errDetails: err }))
-})
-
 // router.get('/package/random/experience', (req, res) => {
 
 //     Package
