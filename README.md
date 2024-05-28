@@ -5,9 +5,9 @@
 
 | HTTP VERB |             PATH                     |               DESCRIPTION                   |
 |-----------|--------------------------------------|---------------------------------------------|
-|GET        |'/api/experience/'                    | get all experiences                         |
+|GET        |'/api/experiences/'                    | get all experiences                         |
 |GET        |'/api/experiences/:experienceId'       | get one experience                          |
-|POST       |'/api/experiences/'                   | add new experience                          |
+|POST       |'/api/experiences/'                    | add new experience                          |
 |PUT        |'/api/experiences/:experienceId'       | edit one experience                         |
 |DELETE     |'/api/experiences/:experienceId'       | delete one experience                       |
 

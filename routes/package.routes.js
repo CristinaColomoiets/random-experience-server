@@ -5,10 +5,10 @@ const Package = require("../models/Package.model")
 
 router.post('/', (req, res, next) => {
 
-    const { title, prices, description, image, experience } = req.body
+    const { title, price, description, image, experience } = req.body
 
     Package
-        .create({ title, prices, description, experience, image })
+        .create({ title, price, description, experience, image })
         .then(newPackage => res.sendStatus(201).json(newPackage))
         .catch(err => next(err))
 })
