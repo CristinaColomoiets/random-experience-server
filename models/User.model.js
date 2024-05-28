@@ -12,6 +12,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, 'The user password is mandatory'],
+    minlength: [4, "The password needs a minimum of 4 characters"]
   },
 
   username: {

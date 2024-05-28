@@ -9,21 +9,22 @@ const { isAuthenticated } = require("./../middleware/verify")
 
 router.post("/signup", (req, res, next) => {
 
-    const { email, password, username } = req.body
+    const { email, password, username, image} = req.body
 
     if (email === '' || password === '' || username === '') {
         res.status(400).json({ message: "Provide email, password and name" })
         return
     }
-
+ 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+    
     if (!emailRegex.test(email)) {
         res.status(400).json({ message: 'Provide a valid email address.' })
         return
     }
 
     if (password.length < 2) {
-        res.status(400).json({ message: 'Password must have at least 3 characters' })
+        res.status(400).json({ message: 'Password must have at least 4 characters' })
         return
     }
 
@@ -40,7 +41,7 @@ router.post("/signup", (req, res, next) => {
             const hashedPassword = bcrypt.hashSync(password, salt);
 
             User
-                .create({ username, email, password: hashedPassword })
+                .create({ username, email, password: hashedPassword, image})
                 .then(() => res.sendStatus(201))
                 .catch(err => next(err))
         })
