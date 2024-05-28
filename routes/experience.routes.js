@@ -11,7 +11,7 @@ router.post('/', (req, res, next) => {
 
     }
     Experience
-        .create({ country, places, hotel, location })
+        .create({ country, places, hotel, latitude, longitude })
         .then(newExperience => res.status(201).json(newExperience))
         .catch(err => next(err))
 })
