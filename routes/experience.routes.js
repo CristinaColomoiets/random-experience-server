@@ -3,7 +3,7 @@ const router = require("express").Router()
 const Experience = require("../models/Experience.model")
 
 router.post('/', (req, res, next) => {
-    const { country, places, hotel, latitude, longitude } = req.body
+    const { country, places, hotel, package, latitude, longitude } = req.body
 
     const location = {
         type: 'Point',
@@ -11,7 +11,7 @@ router.post('/', (req, res, next) => {
 
     }
     Experience
-        .create({ country, places, hotel, latitude, longitude })
+        .create({ country, places, hotel, package, location })
         .then(newExperience => res.status(201).json(newExperience))
         .catch(err => next(err))
 })
@@ -37,10 +37,16 @@ router.get('/:experienceId', (req, res, next) => {
 router.put('/:experienceId', (req, res, next) => {
 
     const { experienceId } = req.params
-    const { country, places, hotel } = req.body
+    const { country, places, hotel, package, latitude, longitude } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [longitude, latitude]
+
+    }
 
     Experience
-        .findByIdAndUpdate(experienceId, { country, places, hotel })
+        .findByIdAndUpdate(experienceId, { country, places, hotel, package, location })
         .then(() => res.sendStatus(204))
         .catch(err => next(err))
 
