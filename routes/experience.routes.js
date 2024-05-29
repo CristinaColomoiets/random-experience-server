@@ -10,8 +10,9 @@ router.post('/', (req, res, next) => {
         coordinates: [longitude, latitude]
 
     }
+
     Experience
-        .create({ country, places, hotel, latitude, longitude })
+        .create({ country, places, hotel, location })
         .then(newExperience => res.status(201).json(newExperience))
         .catch(err => next(err))
 })

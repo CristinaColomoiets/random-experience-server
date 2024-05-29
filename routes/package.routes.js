@@ -17,7 +17,6 @@ router.get('/', (req, res, next) => {
 
     Package
         .find()
-        .populate('experience')
         .then(allPackages => res.json(allPackages))
         .catch(err => next(err))
 })
