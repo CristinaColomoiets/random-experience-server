@@ -17,6 +17,7 @@ router.post('/', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
+
     Experience
         .find()
         .then(allExperiences => res.json(allExperiences))
