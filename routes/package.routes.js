@@ -17,6 +17,7 @@ router.get('/', (req, res, next) => {
 
     Package
         .find()
+        // .select({ title, price, description, image, experience })
         .then(allPackages => res.json(allPackages))
         .catch(err => next(err))
 })

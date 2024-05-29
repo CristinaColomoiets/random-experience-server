@@ -8,7 +8,6 @@ router.post('/', (req, res, next) => {
     const location = {
         type: 'Point',
         coordinates: [longitude, latitude]
-
     }
 
     Experience
@@ -43,7 +42,6 @@ router.put('/:experienceId', (req, res, next) => {
     const location = {
         type: 'Point',
         coordinates: [longitude, latitude]
-
     }
 
     Experience
@@ -54,13 +52,13 @@ router.put('/:experienceId', (req, res, next) => {
 })
 
 router.delete('/:experienceId', (req, res, next) => {
+
     const { experienceId } = req.params
 
     Experience
         .findByIdAndDelete(experienceId)
         .then(() => res.sendStatus(204))
         .catch(err => next(err))
-
-
 })
+
 module.exports = router
