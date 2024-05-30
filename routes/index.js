@@ -1,7 +1,7 @@
 module.exports = app => {
 
   const AuthRouter = require('./auth.routes')
-  app.use('/api/user', AuthRouter)
+  app.use('/api/auth', AuthRouter)
 
   const ExperiencesRouter = require("./experience.routes")
   app.use("/api/experiences", ExperiencesRouter)
@@ -11,5 +11,8 @@ module.exports = app => {
 
   const PurchaseRouter = require('./purchase.routes')
   app.use('/api/purchases', PurchaseRouter)
+
+  const UserRouter = require('./user.routes')
+  app.use('/api/users', UserRouter)
 
 }

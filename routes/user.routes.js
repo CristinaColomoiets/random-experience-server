@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const User = require('../models/User.model')
-const { route } = require('./package.routes')
 
 router.get('/:userId', (req, res, next)=>{
 
@@ -13,13 +12,13 @@ router.get('/:userId', (req, res, next)=>{
 })
 
 
-route.put('/:userId', (req, res, next)=>{
+router.put('/:userId', (req, res, next)=>{
     
     const {userId} = req.params
-    const {image, username} = req.body
+    const {image, username, balance} = req.body
 
     User
-        .findByIdAndUpdate(userId, {image, username})
+        .findByIdAndUpdate(userId, {image, username, balance})
         .then(()=>res.sendStatus(204))
         .catch(error => next(error))
 })
