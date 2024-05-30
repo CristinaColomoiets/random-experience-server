@@ -13,9 +13,18 @@ const PackageSchema = new Schema({
         type: String
     },
 
-    description: {
+    sortDescription: {
         type: String
-    }
+    },
+
+    extendedDescription: {
+        type: String
+    },
+
+
+
+
+
 
 },
     {
