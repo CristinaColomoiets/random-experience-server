@@ -33,3 +33,13 @@ AUTH
 |GET        |'/api/login'                 | login user                                  |
 |POST       |'/api/verify'                | verify user                                 |
 
+
+USER
+--
+
+| HTTP VERB |             PATH            |               DESCRIPTION                   |
+|-----------|-----------------------------|---------------------------------------------|
+|GET        |'/api/users/:userId'        |  user                                        |
+|PUT        |'/api/users/:userId'        |  user                                        |
+|DELETE     |'/api/users/:userId'        |  user                                        |
+
