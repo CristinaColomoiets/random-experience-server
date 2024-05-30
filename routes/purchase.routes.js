@@ -25,6 +25,16 @@ router.post('/', isAuthenticated, (req, res, next) => {
         .catch(err => next(err));
 });
 
+router.get('/:purchaseId', isAuthenticated, (req, res, next) => {
+    const { purchaseId } = req.params;
+
+    Purchase.findById(purchaseId)
+        .populate('experience')
+        .populate('package')
+        .then(purchase => res.json(purchase))
+        .catch(err => next(err));
+});
+
 
 
 module.exports = router
