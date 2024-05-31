@@ -5,11 +5,11 @@
 
 | HTTP VERB |             PATH                     |               DESCRIPTION                   |
 |-----------|--------------------------------------|---------------------------------------------|
-|GET        |'/api/experiences/'                    | get all experiences                         |
-|GET        |'/api/experiences/:experienceId'       | get one experience                          |
-|POST       |'/api/experiences/'                    | add new experience                          |
-|PUT        |'/api/experiences/:experienceId'       | edit one experience                         |
-|DELETE     |'/api/experiences/:experienceId'       | delete one experience                       |
+|GET        |'/api/experiences/'                    | get all experiences                        |
+|GET        |'/api/experiences/:experienceId'       | get one experience                         |
+|POST       |'/api/experiences/'                    | add new experience                         |
+|PUT        |'/api/experiences/:experienceId'       | edit one experience                        |
+|DELETE     |'/api/experiences/:experienceId'       | delete one experience                      |
 
 
 PACKAGE CRUD (2º)
@@ -17,11 +17,22 @@ PACKAGE CRUD (2º)
 
 | HTTP VERB |             PATH                |               DESCRIPTION                   |
 |-----------|---------------------------------|---------------------------------------------|
-|GET        |'/api/packages/'                  | get all packages                            |
-|GET        |'/api/packages/:packageId'        | get one package                             |
-|POST       |'/api/packages/'                  | add new package                             |
-|PUT        |'/api/packages/:packageId'        | edit one package                            |
-|DELETE     |'/api/packages/:packageId'        | delete one package                          |
+|GET        |'/api/packages/'                  | get all packages                           |
+|GET        |'/api/packages/:packageId'        | get one package                            |
+|POST       |'/api/packages/'                  | add new package                            |
+|PUT        |'/api/packages/:packageId'        | edit one package                           |
+|DELETE     |'/api/packages/:packageId'        | delete one package                         |
+
+
+PURCHASE
+--
+
+| HTTP VERB |             PATH                |               DESCRIPTION                   |
+|-----------|---------------------------------|---------------------------------------------|
+|POST       |'/api/purchases/'                | post new purchase                           |
+|GET        |'/api/purchases/:purchaseId'     | get one purchase                            |
+
+
 
 
 AUTH
@@ -39,7 +50,7 @@ USER
 
 | HTTP VERB |             PATH            |               DESCRIPTION                   |
 |-----------|-----------------------------|---------------------------------------------|
-|GET        |'/api/users/:userId'        |  user                                        |
-|PUT        |'/api/users/:userId'        |  user                                        |
-|DELETE     |'/api/users/:userId'        |  user                                        |
+|GET        |'/api/users/:userId'         |  get user data                              |
+|PUT        |'/api/users/:userId'         |  post new user data                         |
+|DELETE     |'/api/users/:userId'         |  delete one user data                       |
 

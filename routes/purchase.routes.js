@@ -10,16 +10,16 @@ router.post('/', isAuthenticated, (req, res, next) => {
     const { _id: user } = req.payload;
 
     Experience
-        .countDocuments()
+        .countDocuments({ package })
         .then(totalExp => {
             const randomExpNumber = Math.floor(Math.random() * totalExp)
-            return Experience.findOne().skip(randomExpNumber)
+            return Experience.findOne({ package }).skip(randomExpNumber)
         })
         .then(randomExperience => {
             return Purchase.create({ package, user, experience: randomExperience._id });
         })
         .then(newPurchase => {
-            return Purchase.findById(newPurchase._id).populate('package');
+            return Purchase.findById(newPurchase._id).populate('package').populate('experience');
         })
         .then(purchase => res.json(purchase))
         .catch(err => next(err));
