@@ -19,7 +19,7 @@ router.post('/', isAuthenticated, (req, res, next) => {
             return Purchase.create({ package, user, experience: randomExperience._id });
         })
         .then(newPurchase => {
-            return Purchase.findById(newPurchase._id).populate('package');
+            return Purchase.findById(newPurchase._id).populate('package').populate('experience');
         })
         .then(purchase => res.json(purchase))
         .catch(err => next(err));
