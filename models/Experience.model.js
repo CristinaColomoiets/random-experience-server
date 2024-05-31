@@ -9,8 +9,7 @@ const experienceSchema = new Schema({
 
     hotel: {
         type: String,
-        required: true,
-
+        required: true
     },
 
     places: {
@@ -21,6 +20,10 @@ const experienceSchema = new Schema({
     package: {
         type: Schema.ObjectId,
         ref: 'Package'
+    },
+
+    imageUrl: {
+        type: String,
     },
 
     location: {
