@@ -1,11 +1,12 @@
 const router = require("express").Router()
 const Experience = require("../models/Experience.model")
 
+
 router.post('/', (req, res, next) => {
-    const { country, places, hotel, package, imageUrl, location } = req.body
+    const { country, places, hotel, package, imageUrl, imageLinks, location } = req.body
 
     Experience
-        .create({ country, places, hotel, package, imageUrl, location })
+        .create({ country, places, hotel, package, imageUrl, imageLinks, location })  // Asegurarse de incluir imageLinks aquí
         .then(newExperience => res.status(201).json(newExperience))
         .catch(err => next(err))
 })
@@ -28,11 +29,11 @@ router.get('/:experienceId', (req, res, next) => {
 
 router.put('/:experienceId', (req, res, next) => {
     const { experienceId } = req.params
-    const { country, places, hotel, package, imageUrl, location } = req.body
+    const { country, places, hotel, package, imageUrl, imageLinks, location } = req.body
 
     Experience
-        .findByIdAndUpdate(experienceId, { country, places, hotel, package, imageUrl, location })
-        .then(() => res.sendStatus(204))
+        .findByIdAndUpdate(experienceId, { country, places, hotel, package, imageUrl, imageLinks, location }, { new: true })  // Asegurarse de incluir imageLinks aquí también
+        .then(updatedExperience => res.json(updatedExperience))
         .catch(err => next(err))
 })
 
