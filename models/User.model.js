@@ -22,7 +22,7 @@ const userSchema = new Schema({
   },
   image: {
     type: String,
-    default: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-No-Background.png'
+    default: 'https://res.cloudinary.com/drpdy7tju/image/upload/v1717319567/default-avatar-icon-of-social-media-user-vector_m5rgeb.jpg'
   },
 
   balance: {
