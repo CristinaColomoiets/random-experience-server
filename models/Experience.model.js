@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose")
 
 const experienceSchema = new Schema({
 
@@ -6,26 +6,24 @@ const experienceSchema = new Schema({
         type: String,
         required: true
     },
-
     hotel: {
         type: String,
         required: true
     },
-
     places: {
         type: [String],
         required: true
     },
-
     package: {
         type: Schema.ObjectId,
         ref: 'Package'
     },
-
     imageUrl: {
-        type: String,
+        type: String
     },
-
+    imageLinks: {
+        type: [String]
+    },
     location: {
         type: {
             type: String
@@ -34,12 +32,9 @@ const experienceSchema = new Schema({
             type: [Number]
         }
     }
-
-},
-    {
-        timestamps: true
-    }
-)
+}, {
+    timestamps: true
+})
 
 experienceSchema.index({ location: '2dsphere' })
 

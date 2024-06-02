@@ -1,9 +1,9 @@
 const router = require('express').Router()
 const User = require('../models/User.model')
 
-router.get('/:userId', (req, res, next)=>{
+router.get('/:userId', (req, res, next) => {
 
-    const{userId} = req.params
+    const { userId } = req.params
 
     User
         .findById(userId)
@@ -12,25 +12,28 @@ router.get('/:userId', (req, res, next)=>{
 })
 
 
-router.put('/:userId', (req, res, next)=>{
-    
-    const {userId} = req.params
-    const {image, username, balance} = req.body
+router.put('/:userId', (req, res, next) => {
+
+    const { userId } = req.params
+    const { image, username, balance } = req.body
 
     User
-        .findByIdAndUpdate(userId, {image, username, balance})
-        .then(()=>res.sendStatus(204))
+        .findByIdAndUpdate(userId, { image, username, balance })
+        .then(() => res.sendStatus(204))
         .catch(error => next(error))
 })
 
+router.get('/:userId?purchaseId=/:purchaseId')
 
-router.delete('/:userId', (req, res)=>{
 
-    const {userId} = req.params
+
+router.delete('/:userId', (req, res) => {
+
+    const { userId } = req.params
 
     User
         .findByIdAndDelete(userId)
-        .then(()=> res.sendStatus(204))
+        .then(() => res.sendStatus(204))
         .catch(error => next(error))
 
 })

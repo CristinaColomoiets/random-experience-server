@@ -36,5 +36,19 @@ router.get('/:purchaseId', isAuthenticated, (req, res, next) => {
 });
 
 
+router.get('/byuser/userId', isAuthenticated, (req, res, next) => {
+
+    // se puede hacer de las dos maneras
+    const { _id: user } = req.payload;
+    // const { _id } = req.payload;
+
+    Purchase.find({ user: user })
+        .populate('experience')
+        .populate('package')
+        .then(purchase => res.json(purchase))
+        .catch(err => next(err));
+})
+
+
 
 module.exports = router
