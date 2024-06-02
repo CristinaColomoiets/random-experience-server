@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const PackageSchema = new Schema({
-    s: {
+    title: {
         type: String,
     },
 
