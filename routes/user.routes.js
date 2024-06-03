@@ -1,41 +1,44 @@
-const router = require('express').Router()
-const User = require('../models/User.model')
+const router = require("express").Router()
+const { isAuthenticated } = require('../middleware/verify')
+const User = require("../models/User.model")
 
-router.get('/:userId', (req, res, next) => {
+router.get('/balance', isAuthenticated, (req, res, next) => {
 
-    const { userId } = req.params
+    const { _id: userId } = req.payload
 
-    User
-        .findById(userId)
-        .then(oneUser => res.json(oneUser))
+    User.findById(userId)
+        .select({ balance: 1 })
+        .then(user => res.json(user))
         .catch(error => next(error))
+
 })
 
+router.post('/balance/add', isAuthenticated, (req, res, next) => {
 
-router.put('/:userId', (req, res, next) => {
+    const { amount } = req.body
+    const { _id: userId } = req.payload
 
-    const { userId } = req.params
-    const { image, username, balance } = req.body
+    User.findByIdAndUpdate(userId, { $inc: { balance: amount } }, { new: true, select: 'balance' })
+        .then(updatedUser => res.json(updatedUser))
+        .catch(err => next(err))
 
-    User
-        .findByIdAndUpdate(userId, { image, username, balance })
-        .then(() => res.sendStatus(204))
-        .catch(error => next(error))
 })
 
-router.get('/:userId?purchaseId=/:purchaseId')
+router.put('/balance/spend', isAuthenticated, (req, res, next) => {
 
+    const { amount } = req.body
+    const { _id: userId } = req.payload
 
-
-router.delete('/:userId', (req, res) => {
-
-    const { userId } = req.params
-
-    User
-        .findByIdAndDelete(userId)
-        .then(() => res.sendStatus(204))
-        .catch(error => next(error))
-
+    User.findById(userId)
+        .then(user => {
+            if (user.balance >= amount) {
+                return User.findByIdAndUpdate(userId, { $inc: { balance: -amount } }, { new: true, select: 'balance' })
+            } else {
+                res.sendStatus(400)
+            }
+        })
+        .then(updatedUser => res.json(updatedUser))
+        .catch(err => next(err))
 })
 
 module.exports = router

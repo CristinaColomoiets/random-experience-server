@@ -20,6 +20,7 @@ const userSchema = new Schema({
     required: [true, 'Username is mandatory'],
     minlength: [3, 'The user needs at least 3 characters']
   },
+
   image: {
     type: String,
     default: 'https://res.cloudinary.com/drpdy7tju/image/upload/v1717319567/default-avatar-icon-of-social-media-user-vector_m5rgeb.jpg'
@@ -29,6 +30,7 @@ const userSchema = new Schema({
     type: Number,
     default: 0
   },
+
 
   role: {
     type: String,
