@@ -2,6 +2,17 @@ const router = require("express").Router()
 const { isAuthenticated } = require('../middleware/verify')
 const User = require("../models/User.model")
 
+
+router.get('/user', isAuthenticated, (req, res, next) => {
+
+    const { _id: userId } = req.payload
+
+    User
+        .findById(userId)
+        .then(user => res.json(user))
+        .catch(error => next(error))
+})
+
 router.get('/balance', isAuthenticated, (req, res, next) => {
 
     const { _id: userId } = req.payload
@@ -40,5 +51,6 @@ router.put('/balance/spend', isAuthenticated, (req, res, next) => {
         .then(updatedUser => res.json(updatedUser))
         .catch(err => next(err))
 })
+
 
 module.exports = router
