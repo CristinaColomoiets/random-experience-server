@@ -2,6 +2,16 @@ const router = require("express").Router()
 const { isAuthenticated } = require('../middleware/verify')
 const User = require("../models/User.model")
 
+router.get('/user', isAuthenticated, (req, res, next) => {
+
+    const { _id: userId } = req.payload
+
+    User
+        .findById(userId)
+        .then(user => res.json(user))
+        .catch(error => next(error))
+})
+
 router.get('/balance', isAuthenticated, (req, res, next) => {
 
     const { _id: userId } = req.payload

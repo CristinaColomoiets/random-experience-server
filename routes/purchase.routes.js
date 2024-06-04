@@ -12,11 +12,12 @@ router.post('/', isAuthenticated, (req, res, next) => {
     Experience
         .countDocuments({ package })
         .then(totalExp => {
+            console.log('totalExp:', totalExp)
             const randomExpNumber = Math.floor(Math.random() * totalExp)
             return Experience.findOne({ package }).skip(randomExpNumber)
         })
         .then(randomExperience => {
-            return Purchase.create({ package, user, experience: randomExperience._id });
+            return Purchase.create({ package, user, experience: randomExperience._id }); 
         })
         .then(newPurchase => {
             return Purchase.findById(newPurchase._id).populate('package').populate('experience');
@@ -38,9 +39,7 @@ router.get('/:purchaseId', isAuthenticated, (req, res, next) => {
 
 router.get('/byuser/userId', isAuthenticated, (req, res, next) => {
 
-    // se puede hacer de las dos maneras
     const { _id: user } = req.payload;
-    // const { _id } = req.payload;
 
     Purchase.find({ user: user })
         .populate('experience')
