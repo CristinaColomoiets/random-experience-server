@@ -21,11 +21,6 @@ const PackageSchema = new Schema({
         type: String
     },
 
-
-
-
-
-
 },
     {
         timestamps: true
